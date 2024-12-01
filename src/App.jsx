@@ -1,33 +1,15 @@
-// USE MEMO!!!
-// import Factorial from "./components/Factorial";
-// import Filter from "./components/Filter";
-// import Expence from "./useMemo/Expence";
-
-// USE CALLBACK!!!
-
-// import Couter from "./useCallback/Couter";
-// import Alert from "./useCallback/Alert";
-import Focus from "./useRef/Focus";
-import Render from "./useRef/Render";
-
-const App = () =>{
-   return <div>
-     <h1>Hi there!</h1>
-     <>
-       {/* USE MEMO HOOK COMPONENTS */}
-       {/* <Factorial></Factorial> */}
-       {/* <Filter></Filter> */}
-       {/* <Expence></Expence> */}
-     </>
-
-     <>
-       {/* <Couter></Couter> */}
-       {/* <Alert></Alert> */}
-       {/* <Focus></Focus> */}
-       <Render></Render>
-     </>
-     
-   </div>
+import React from 'react'
+import RouterApp from './Routers/RouterApp'
+import HookApp from './Hooks/HookApp'
+import ContextApp from "./ContextAPI/ContextApp"
+function App() {
+  return (
+    <>
+      <RouterApp></RouterApp>
+      <HookApp></HookApp>
+      <ContextApp></ContextApp>
+    </>
+  )
 }
 
-export default App;
+export default App

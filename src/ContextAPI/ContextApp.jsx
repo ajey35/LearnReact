@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { useState } from 'react'
-import { CountContext } from './components/ContextApi';
 
-function App() {
+import CountContext from './ContextApi';
+
+function ContextApp() {
   const [count,setCount] = useState(9);
 
   return <>
@@ -35,4 +36,4 @@ function Buttons(){
        }}>DECREMENT</button>
        </>
 }
-export default App
+export default ContextApp
