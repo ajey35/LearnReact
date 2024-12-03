@@ -5,9 +5,9 @@ import ContextApp from "./ContextAPI/ContextApp"
 function App() {
   return (
     <>
-      <RouterApp></RouterApp>
-      <HookApp></HookApp>
-      <ContextApp></ContextApp>
+       {/* <RouterApp />  */}
+      {/* <HookApp/>       */}
+        <ContextApp/>
     </>
   )
 }

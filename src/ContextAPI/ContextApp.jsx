@@ -1,38 +1,51 @@
-import React, { useContext } from 'react'
-import { useState } from 'react'
+import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-import CountContext from './ContextApi';
+import countAtom from "../store/atoms/count";
+import { useMemo } from "react";
 
 function ContextApp() {
-  const [count,setCount] = useState(9);
-
+  console.log("Count Re- Rendered");
+  
   return <>
-     <CountContext.Provider value={{count,setCount}}>
-         <Count></Count>
-     </CountContext.Provider>
+     <Count></Count>
   </>
 }
 
 function Count(){
   return<>
     <div>
-      <CountRenderer></CountRenderer>
-      <Buttons></Buttons>
+      <RecoilRoot>
+         <CountRenderer></CountRenderer>
+          <Buttons></Buttons>
+      </RecoilRoot>
     </div>
   </>
 } 
 function CountRenderer(){
-  const {count} = useContext(CountContext);
-  return <h1>Count : {count}</h1>
+  const count =  useRecoilValue(countAtom);
+  return <div>
+     <h1>Count :  {count}</h1>
+     <EvenDisplay/>
+  </div>
 }
+function EvenDisplay(){
+  const count = useRecoilValue(countAtom);
+  const Even = useMemo(()=>{
+    return count&1;
+  },[count]);
+  return <>
+     {Even?"":"It is Even"}
+  </>
+}
+
 function Buttons(){
-  const {count,setCount} = useContext(CountContext);
+  const setCount = useSetRecoilState(countAtom);
    return <>
        <button onClick={()=>{
-        setCount(count+1)
+        setCount(count=>count+1)
        }}>INCREMENT</button>
        <button onClick={()=>{
-        setCount(count-1)
+        setCount(count=>count-1)
        }}>DECREMENT</button>
        </>
 }
